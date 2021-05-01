@@ -1,6 +1,7 @@
 'use strict';
 
 import { Component } from "../component.js";
+import { vectorSub } from "../util/vector.js";
 
 export class CharacterInput extends Component {
 
@@ -77,7 +78,7 @@ export class CharacterInput extends Component {
     const canvasX = Math.round(event.clientX - cRect.left);        // Subtract the 'left' of the canvas from the X/Y
     const canvasY = Math.round(event.clientY - cRect.top); 
   
-    this.mousePosition = [canvasX, canvasY];
+    this.mousePosition = vectorSub([canvasX, canvasY], [450, 300]);
   }
 }
 

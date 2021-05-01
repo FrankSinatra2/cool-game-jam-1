@@ -1,4 +1,5 @@
 import { clamp } from "./util/math.js";
+import { config } from "./config.js";
 
 export class SpatialHashGrid {
   
@@ -24,11 +25,12 @@ export class SpatialHashGrid {
     return `${cellIndex[0]}.${cellIndex[1]}`;
   }
 
-  createClient(position, dimensions) {
+  createClient(position, dimensions, data) {
     const client = {
       position: position,
       dimensions: dimensions,
-      indicies: null
+      indicies: null,
+      data: data
     };
 
     this.insertClient(client);
@@ -94,5 +96,30 @@ export class SpatialHashGrid {
       }
     }
     return clients;
+  }
+
+  rect(client) {
+    let [x, y] = client.position;
+    let [w, h] = client.dimensions;
+
+    // x = x + config.canvas.width / 2.0;
+    // y = y + config.canvas.height / 2.0;
+
+    return {
+      left: x - w / 2.0,
+      top: y + h / 2.0,
+      right: x + w / 2.0,
+      bottom: y - h / 2.0
+    }
+  }
+
+  intersects(a, b) {
+    const r1 = this.rect(a);
+    const r2 = this.rect(b);
+
+    return !(r2.left > r1.right || 
+            r2.right < r1.left || 
+            r2.top > r1.bottom ||
+            r2.bottom < r1.top);
   }
 }

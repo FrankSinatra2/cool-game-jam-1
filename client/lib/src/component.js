@@ -11,6 +11,7 @@ export class Component {
     }
   }
 
+  delete() {}
   init() {}
   update(ts) {}
   render(ctx) {}

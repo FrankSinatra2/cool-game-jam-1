@@ -1,0 +1,79 @@
+
+
+.game-container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+
+  margin-left: auto;
+
+  background: gray;
+
+  .game-board-container {
+      width: fit-content;
+      height: fit-content;
+
+      canvas {
+        background: lightcoral;
+        border: 3px green solid;
+      }
+  }
+
+  .player-profile-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+
+    .player-profile {
+      background: white;
+      height: 20%;
+      width: 100%;
+
+      display: flex;
+      border: 1px black solid;
+
+      .player-profile-picture {
+        width: 30%;
+        height: 100%;
+
+        // background: yellow;
+      }
+
+      .player-stats {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .player-profile-health {
+          width: 100%;
+          height: 100%;
+
+          border: 1px black solid;
+
+          .health-bar {
+            background: red;
+            width: 67%;
+            height: 20px;
+          }
+        }
+
+        .player-profile-ammo {
+          width: 100%;
+          height: 100%;
+
+          border: 1px black solid;
+
+          .ammo-bar {
+            background: green;
+            width: 73%;
+            height: 20px;
+          }
+        }
+      }
+    }
+  }
+}

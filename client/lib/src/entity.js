@@ -2,7 +2,11 @@
 
 import { vectorAdd } from "./util/vector.js";
 
+
+
 export class Entity {
+
+  static id = 0;
 
   constructor(tag) {
     this.tag = tag;
@@ -16,6 +20,8 @@ export class Entity {
 
     // imaginary number
     this.rotation = [0, 0];
+
+    this.id = Math.floor(Math.random() * 100000);
   }
 
   getPosition() {
@@ -27,7 +33,6 @@ export class Entity {
   }
 
   addComponent(comp) {
-    console.log(this);
     comp.parent = this;
     this.components[comp.tag] = comp;
   }
@@ -50,7 +55,6 @@ export class Entity {
   }
 
   broadcast(topic, data) {
-    console.log(`${this.tag} : ${topic}`);
     if (this.parent !== null) {
       this.parent.broadcast(topic, data);
     }
@@ -87,6 +91,16 @@ export class Entity {
 
     for (const child of this.children) {
       child.render(ctx);
+    }
+  }
+
+  delete() {
+    for (const comp of Object.values(this.components)) {
+      comp.delete();
+    }
+
+    for (const child of this.children) {
+      child.delete();
     }
   }
 }

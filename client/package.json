@@ -4,11 +4,14 @@
   "description": "wizard fighter yo!",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch lib/sass:dist/css",
+    "start": "http-server"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "http-server": "^0.12.3",
     "sass": "^1.32.12"
   }
 }
