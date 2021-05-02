@@ -57,7 +57,7 @@ const main = () => {
           continue;
         }
 
-        client.socket.emit('player.fire', data); // { position: data.position, direction: data.direction, id: data.id });
+        client.socket.emit('player.fire', data);
       }
     });
 

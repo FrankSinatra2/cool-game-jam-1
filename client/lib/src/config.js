@@ -6,6 +6,6 @@ export const config = {
     height: 800
   },
   websocket: {
-    url: 'ws://localhost:3030'
+    url: 'ws://10.0.0.106:3030' // 'ws://localhost:3030'
   }
 };
